@@ -1,0 +1,16 @@
+-BEGIN HEADER-					
+NASA/POWER CERES/MERRA2 Native Resolution Daily Data 					
+Dates (month/day/year): 04/01/2021 through 07/12/2021 					
+Location: Regional 					
+Elevation from MERRA-2: Average for 0.5 x 0.625 degree lat/lon region = na meters					
+Value for missing model data cannot be computed or out of model availability range: -999 					
+Parameter(s): 					
+T2M             MERRA-2 Temperature at 2 Meters (C) 					
+T2MDEW          MERRA-2 Dew/Frost Point at 2 Meters (C) 					
+TS              MERRA-2 Earth Skin Temperature (C) 					
+PRECTOTCORR     MERRA-2 Precipitation Corrected (mm) 					
+PS              MERRA-2 Surface Pressure (kPa) 					
+-END HEADER-					
+
+
+download here: https://power.larc.nasa.gov/data-access-viewer/
