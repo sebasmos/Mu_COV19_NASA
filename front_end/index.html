@@ -337,10 +337,13 @@ function zoomMap() {
     const longField = document.getElementById('longfield');
     const lat = parseFloat(latField.value);
     const long = parseFloat(longField.value);
+    var date_pointer = document.getElementById('datefield').value;
+
     if (!(isNaN(lat) || isNaN(long))) {
         try {
             map.setView(L.latLng(lat, long), 7, { animate: true, duration: 1 });
             var Marker5 = L.marker([lat, long]);
+            
             Marker5.addTo(map);
 
             Marker5.onAdd = function(map) {
@@ -349,14 +352,16 @@ function zoomMap() {
             return this._div;
             };
             
-            var date_pointer = document.getElementById('datefield');
             
-            console.log(date_pointer)
             
-            console.log(geojson)
+            console.log(date_pointer.replace('/', '-'));
             
-       
-            var popup = Marker5.bindPopup(`COVID-19 Risk:` + geojson.date_pointer)
+            var popup = Marker5.bindPopup(`COVID-19 Risk`)
+            
+            info.update(layer.feature.properties);
+
+
+
             popup.addTo(map);
             
 
@@ -364,9 +369,19 @@ function zoomMap() {
             console.error('error:', e);
         }
 
-    }
-}
 
+    }
+                // method that we will use to update the control based on feature properties passed
+                info.update = function(props) {
+                this._div.innerHTML = '<h4>Colombia COVID-19 Risk</h4>' + (props ?
+                    '<b>' + props.NOMBRE_DPT + '</b><br />' + ' COVID-19 Risk factor: ' + props.risk + 
+                    '</b><br />' + props.total_population + ' people ' +
+                    '</b><br />' + date_pointer + '</b>' + ' date ':
+                    'Hover over a state');
+                console.log(props);
+                console,log(date);
+            };
+}
 
 
 
