@@ -190,10 +190,10 @@
 
     // find colors here : https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=4 
     function getColor(d) {
-        return d == 2.0 ? '#fecc5c' :// rojo
-             d >= 3.0 ? '#cb181d' :// amarillo
-            d == 1 ? '#fd8d3c' : // verde claro
-            d == 0 ? '#238443' : // verde
+        return d > 3.0 ? '#cb181d' :// rojo oscuro
+             d > 2.0 ? '#fb6a4a' :// rojo medio
+            d > 1.0 ? '#fcae91' : // rojo claro
+            d >= 0.0 ? '#238b45' : // verde
             '#FFEDA0';
     }
     function style(feature) {
@@ -280,8 +280,8 @@
     legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 1, 2, 3, 4],
-            //grades1 = [2, 3];
+            grades = [0, 1,2],
+            grades1 = [2, 3,4];
             labels = [];
 
         // loop through our density intervals and generate a label with a colored square for each interval
@@ -290,14 +290,14 @@
                 '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' <br>' : '');
         }
-/*
+
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades1.length-1; i++) {
             div.innerHTML +=
                 '<i style="background:' + getColor(grades1[i] + 1) + '"></i> ' +
                 grades1[i] + (grades1[i + 1] ? '&ndash;' + grades1[i + 1] + ' <br>' : '');
         }       
-*/
+
 
         return div;
     };
