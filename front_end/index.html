@@ -295,17 +295,6 @@
                 grades[i] + (grades[i + 1] ? '' +  ' <br>' : '');
         }
 
-        // loop through our density intervals and generate a label with a colored square for each interval
-        /*
-        for (var i = 0; i < grades1.length-1; i++) {
-            div.innerHTML +=
-                '<i style="background:' + getColor(grades1[i] + 1) + '"></i> ' +
-                grades1[i] + (grades1[i + 1] ? '&ndash;' + grades1[i + 1] + ' <br>' : '');
-        } 
-        */ 
-         
-
-
         return div;
     };
 
@@ -353,13 +342,33 @@ function zoomMap() {
             map.setView(L.latLng(lat, long), 7, { animate: true, duration: 1 });
             var Marker5 = L.marker([lat, long]);
             Marker5.addTo(map);
-            var popup = Marker5.bindPopup('COVID-19 Risk:')
+
+            Marker5.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+            this.update();
+            return this._div;
+            };
+            
+            var date_pointer = document.getElementById('datefield');
+            
+            console.log(date_pointer)
+            
+            console.log(geojson)
+            
+       
+            var popup = Marker5.bindPopup(`COVID-19 Risk:` + geojson.date_pointer)
             popup.addTo(map);
+            
+
         } catch (e) {
             console.error('error:', e);
         }
+
     }
 }
+
+
+
 
 const elem = document.querySelector('input[name="datepicker"]');
 const datepicker = new Datepicker(elem);
