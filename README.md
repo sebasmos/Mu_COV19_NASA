@@ -3,6 +3,8 @@
 Mutations Data from:
 
 <a href="http://www.ins.gov.co/BibliotecaDigital/Estrategia-caracterizacion-genomica-muestreo-probabilistico-SARS-CoV-2-Primer-muestreo.pdf">Covid Mutations sampling by INS Colombia</a>
+
+
 <a href="https://microreact.org/project/nwAwK6rDzoLbmBY5P1VGsj/f6583326">Mutation Data</a>
 
 Web:
